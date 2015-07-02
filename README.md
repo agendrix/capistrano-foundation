@@ -9,7 +9,7 @@ Installation
 Add this to your application's Gemfile:
 
     gem "capistrano", "~> 3.1"
-    gem "capistrano-foundation", github: "lodgem/capistrano-foundation"
+    gem "capistrano-foundation", github: "agendrix/capistrano-foundation"
 
 And then execute:
 
