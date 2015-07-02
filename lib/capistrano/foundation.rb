@@ -1,0 +1,6 @@
+load File.expand_path("../tasks/base.rake", __FILE__)
+load File.expand_path("../tasks/database.rake", __FILE__)
+load File.expand_path("../tasks/foreman.rake", __FILE__)
+load File.expand_path("../tasks/nginx.rake", __FILE__)
+load File.expand_path("../tasks/puma.rake", __FILE__)
+load File.expand_path("../tasks/sidekiq.rake", __FILE__)
