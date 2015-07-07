@@ -1,6 +1,6 @@
 namespace :load do
   task :defaults do
-    set :foreman_app_name, fetch(:application)
+    set :foreman_app_name, -> { fetch(:application) }
   end
 end
 

@@ -1,7 +1,7 @@
 namespace :load do
   task :defaults do
-    set :sidekiq_init_name, "#{fetch(:foreman_app_name)}-worker"
-    set :sidekiq_pid_path,  "#{shared_path}/tmp/pids/sidekiq.pid"
+    set :sidekiq_init_name, -> { "#{fetch(:foreman_app_name, fetch(:application))}-worker" }
+    set :sidekiq_pid_path,  -> { "#{shared_path}/tmp/pids/sidekiq.pid" }
   end
 end
 

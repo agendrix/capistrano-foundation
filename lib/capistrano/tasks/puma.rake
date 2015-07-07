@@ -1,7 +1,7 @@
 namespace :load do
   task :defaults do
-    set :puma_init_name, "#{fetch(:foreman_app_name)}-web"
-    set :puma_pid_path,  "#{shared_path}/tmp/pids/puma.pid"
+    set :puma_init_name, -> { "#{fetch(:foreman_app_name, fetch(:application))}-web" }
+    set :puma_pid_path,  -> { "#{shared_path}/tmp/pids/puma.pid" }
   end
 end
 
