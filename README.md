@@ -32,9 +32,9 @@ Configurable options:
     set :force_www_url,            "www.domain.com"
     set :server_name,              "www.domain.com"
     set :ssl_certificate_filename, nil
-    set :puma_init_name,           "#{fetch(:application)}-web"
+    set :puma_init_name,           "#{fetch(:foreman_app_name)}-web"
     set :puma_pid_path,            "#{shared_path}/tmp/pids/puma.pid"
-    set :sidekiq_init_name,        "#{fetch(:application)}-worker"
+    set :sidekiq_init_name,        "#{fetch(:foreman_app_name)}-worker"
     set :sidekiq_pid_path,         "#{shared_path}/tmp/pids/sidekiq.pid"
 
 Contributing
