@@ -6,7 +6,7 @@ namespace :load do
 end
 
 namespace :puma do
-  desc "Start puma workers"
+  desc "Start puma"
   task :start do
     on roles(:app) do
       with rails_env: fetch(:env), rack_env: fetch(:env) do
@@ -15,7 +15,7 @@ namespace :puma do
     end
   end
 
-  desc "Stop puma workers"
+  desc "Stop puma"
   task :stop do
     on roles(:app) do
       with rails_env: fetch(:env), rack_env: fetch(:env) do
@@ -24,25 +24,22 @@ namespace :puma do
     end
   end
 
-  desc "Phased-restart puma workers (if running), start it otherwise"
-  task :smart_restart do
+  desc "Restart puma"
+  task :restart do
     on roles(:app) do
-      within current_path do
-        with rails_env: fetch(:env), rack_env: fetch(:env) do
-          if test("[ -f #{fetch(:puma_pid_path)} ]") && test("kill -0 $( cat #{fetch(:puma_pid_path)} )")
-            execute :bundle, :exec, :pumactl, "-P tmp/pids/puma.pid", "phased-restart"
-          else
-            sudo "start #{fetch(:puma_init_name)}"
-          end
-        end
+      with rails_env: fetch(:env), rack_env: fetch(:env) do
+        sudo "restart #{fetch(:puma_init_name)}"
       end
     end
   end
-  after "deploy:published", "puma:smart_restart"
 
-  desc "Restart puma workers"
-  task :restart do
-    invoke "puma:stop"
-    invoke "puma:start"
+  desc "Reload puma workers (phased-restart)"
+  task :reload do
+    on roles(:app) do
+      with rails_env: fetch(:env), rack_env: fetch(:env) do
+        sudo "reload #{fetch(:puma_init_name)}"
+      end
+    end
   end
+  after "deploy:published", "puma:reload"
 end
