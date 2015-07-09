@@ -39,7 +39,9 @@ namespace :puma do
       within current_path do
         with rails_env: fetch(:env), rack_env: fetch(:env) do
           begin
-            sudo "reload #{fetch(:puma_init_name)}"
+            # Reload needs to happens on process's upstart script
+            # TODO: Create a # of processes variable and loop reload
+            sudo "reload #{fetch(:puma_init_name)}-1"
           rescue Exception => error
             invoke "puma:restart"
           end
