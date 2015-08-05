@@ -5,11 +5,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = "capistrano-foundation"
-  gem.version       = "1.1.3"
+  gem.version       = "1.1.4"
   gem.authors       = ["Mathieu Allaire"]
   gem.email         = ["mathieu@agendrix.com"]
-  gem.description   = "Provides a basic capistrano rails stack"
-  gem.summary       = "Provides a basic capistrano rails stack"
+  gem.description   = "Provides a basic capistrano Rails stack"
+  gem.summary       = "Provides a basic capistrano Rails stack"
   gem.homepage      = "https://github.com/agendrix/capistrano-foundation"
   gem.license       = "MIT"
 
