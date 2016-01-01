@@ -28,7 +28,11 @@ namespace :puma do
   task :restart do
     on roles(:app) do
       with rails_env: fetch(:env), rack_env: fetch(:env) do
-        sudo "restart #{fetch(:puma_init_name)}"
+        begin
+          sudo "restart #{fetch(:puma_init_name)}"
+        rescue Exception => error
+          invoke "puma:start"
+        end
       end
     end
   end
