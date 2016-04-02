@@ -90,6 +90,7 @@ server {
     gzip_static on;
     expires max;
     add_header Cache-Control public;
+    add_header Access-Control-Allow-Origin *;
   }
 
   error_page              500 502 503 504 /500.html;
