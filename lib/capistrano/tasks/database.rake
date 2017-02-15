@@ -8,7 +8,7 @@ namespace :db do
 
   desc "Seed database"
   task :seed do
-    on roles(:app) do
+    on primary(fetch(:migration_role)) do
       within release_path do
         with rails_env: fetch(:env), rack_env: fetch(:env) do
           execute :rake, "db:seed"
