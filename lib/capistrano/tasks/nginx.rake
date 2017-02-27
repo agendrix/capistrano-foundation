@@ -8,7 +8,7 @@ end
 
 namespace :nginx do
   %w[start stop restart reload].each do |command|
-    desc "#{command} nginx"
+    desc "#{command.capitalize} nginx"
     task command do
       on roles(:web) do
         sudo "service nginx #{command}"
