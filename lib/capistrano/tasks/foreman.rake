@@ -12,6 +12,8 @@ namespace :foreman do
       within release_path do
         tmp_path = "#{shared_path}/tmp/foreman"
         execute :bundle, :exec, "foreman export upstart #{tmp_path} -a #{fetch(:foreman_app_name)} -u #{fetch(:user)} -d #{current_path} -t #{fetch(:foreman_custom_template)}"
+        sudo "chown root:root -R #{tmp_path}/*"
+        sudo "chmod 644 #{tmp_path}/*"
         sudo "mv #{tmp_path}/* /etc/init"
         sudo "rm -rf #{tmp_path}"
       end
