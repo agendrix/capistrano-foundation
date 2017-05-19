@@ -16,5 +16,4 @@ namespace :db do
       end
     end
   end
-  after "deploy:migrate", "db:seed"
 end
