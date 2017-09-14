@@ -8,7 +8,7 @@ end
 namespace :foreman do
   desc "Export the Procfile to Ubuntu upstart"
   task :export do
-    on roles(:app) do |host|
+    on roles(:app, :worker) do |host|
       within release_path do
         tmp_path = "#{shared_path}/tmp/foreman"
         execute :bundle, :exec, "foreman export upstart #{tmp_path} -a #{fetch(:foreman_app_name)} -u #{fetch(:user)} -d #{current_path} -t #{fetch(:foreman_custom_template)}"

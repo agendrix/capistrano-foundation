@@ -8,7 +8,7 @@ end
 namespace :sidekiq do
   desc "Quiet sidekiq (stop accepting new work)"
   task :quiet do
-    on roles(:app) do
+    on roles(:worker) do
       if test("[ -f #{fetch(:sidekiq_pid_path)} ]") && test("kill -0 $( cat #{fetch(:sidekiq_pid_path)} )")
         within current_path do
           with rails_env: fetch(:env), rack_env: fetch(:env) do
@@ -22,7 +22,7 @@ namespace :sidekiq do
 
   desc "Start sidekiq workers"
   task :start do
-    on roles(:app) do
+    on roles(:worker) do
       with rails_env: fetch(:env), rack_env: fetch(:env) do
         sudo "start #{fetch(:sidekiq_init_name)}"
       end
@@ -32,7 +32,7 @@ namespace :sidekiq do
 
   desc "Stop sidekiq workers"
   task :stop do
-    on roles(:app) do
+    on roles(:worker) do
       if test("[ -f #{fetch(:sidekiq_pid_path)} ]") && test("kill -0 $( cat #{fetch(:sidekiq_pid_path)} )")
         with rails_env: fetch(:env), rack_env: fetch(:env) do
           sudo "stop #{fetch(:sidekiq_init_name)}"

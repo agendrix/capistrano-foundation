@@ -1,6 +1,6 @@
 namespace :logrotate do
   task :setup do
-    on roles(:app) do
+    on roles(:app, :worker) do
       destination = "/etc/logrotate.d/#{fetch(:application)}"
       template "logrotate.erb", "/tmp/logrotate_#{fetch(:application)}", as_root: true
       sudo "mv /tmp/logrotate_#{fetch(:application)} #{destination}"
