@@ -48,10 +48,10 @@ Contributing
 
 ## About
 
-Agendrix is small team of passionate who enjoy writing good code that solves interesting problems. We consider ourselves as friendly, hard workers and dynamic. We love to see things differently and strongly believe in progress and innovation.
+![agendrix](https://user-images.githubusercontent.com/304461/31439242-6fe93940-ae59-11e7-8829-9b7a992fb87f.png)
 
-At Agendrix, we use open source software a lot and that's why we try hard to share as much as possible.
+[Agendrix](http://www.agendrix.com) is a team of passionate on a mission to create more pleasant and productive workplaces with innovative software, an exceptional team and unparalleled customer service.
 
 ## License
 
-This project is © [Agendrix](http://www.agendrix.com) It is free software and may be redistributed under the terms specified in the LICENSE file.
+This project is © [Agendrix](http://www.agendrix.com). It is free software and may be redistributed under the terms specified in the LICENSE file.
