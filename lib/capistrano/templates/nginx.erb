@@ -5,10 +5,10 @@ upstream puma {
 <% if fetch(:force_www_url) %>
 server {
   listen 80;
-  <% if fetch(:ssl_certificate_path) && fetch(:ssl_key_path) %>
+  <% if fetch(:ssl_certificate_path) && fetch(:ssl_certificate_key_path) %>
   listen               443 ssl;
   ssl_certificate      <%= fetch(:ssl_certificate_path) %>;
-  ssl_certificate_key  <%= fetch(:ssl_key_path) %>;
+  ssl_certificate_key  <%= fetch(:ssl_certificate_key_path) %>;
   <% elsif fetch(:ssl_certificate_filename) %>
   listen               443 ssl;
   ssl_certificate      /etc/ssl/certs/<%= fetch(:ssl_certificate_filename) %>.pem;
@@ -21,7 +21,7 @@ server {
 }
 <%end %>
 
-<% if fetch(:ssl_certificate_filename) || (fetch(:ssl_certificate_path) && fetch(:ssl_key_path)) %>
+<% if fetch(:ssl_certificate_filename) || (fetch(:ssl_certificate_path) && fetch(:ssl_certificate_key_path)) %>
 server {
   listen      80;
   server_name <%= fetch(:server_name) %>;
@@ -33,10 +33,10 @@ server {
   <% fetch(:redirect_urls).each do |url| %>
     server {
       listen 80;
-      <% if fetch(:ssl_certificate_path) && fetch(:ssl_key_path) %>
+      <% if fetch(:ssl_certificate_path) && fetch(:ssl_certificate_key_path) %>
       listen               443 ssl;
       ssl_certificate      <%= fetch(:ssl_certificate_path) %>;
-      ssl_certificate_key  <%= fetch(:ssl_key_path) %>;
+      ssl_certificate_key  <%= fetch(:ssl_certificate_key_path) %>;
       <% elsif fetch(:ssl_certificate_filename) %>
       listen               443 ssl;
       ssl_certificate      /etc/ssl/certs/<%= fetch(:ssl_certificate_filename) %>.pem;
@@ -55,10 +55,10 @@ server {
 <%end %>
 
 server {
-  <% if fetch(:ssl_certificate_path) && fetch(:ssl_key_path) %>
+  <% if fetch(:ssl_certificate_path) && fetch(:ssl_certificate_key_path) %>
   listen               443 ssl;
   ssl_certificate      <%= fetch(:ssl_certificate_path) %>;
-  ssl_certificate_key  <%= fetch(:ssl_key_path) %>;
+  ssl_certificate_key  <%= fetch(:ssl_certificate_key_path) %>;
   <% elsif fetch(:ssl_certificate_filename) %>
   listen               443 ssl;
   ssl_certificate      /etc/ssl/certs/<%= fetch(:ssl_certificate_filename) %>.pem;
